@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Custom (tambahan dari project)
+*.log
+*.zip
+uploads/
