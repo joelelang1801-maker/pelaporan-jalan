@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Judul</th>
+        <th>Lokasi</th>
+        <th>Deskripsi</th>
+        <th>Status</th>
+        <th>Foto</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="laporan : ${laporanList}">
+
+        <td th:text="${laporan.id}"></td>
+
+        <td th:text="${laporan.judul}"></td>
+
+        <td th:text="${laporan.lokasi}"></td>
+
+        <td th:text="${laporan.deskripsi}"></td>
+
+        <td th:text="${laporan.status}"></td>
+
+        <td>
+    <img th:src="@{'/uploads/' + ${laporan.foto}}"
+         width="150"
+         class="img-thumbnail">
+</td>
+
+    </tr>
+
+    </tbody>
+
+</table>

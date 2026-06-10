@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+
+    <h2>Dashboard Admin</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    Total User
+                    <h3 th:text="${totalUser}"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    Total Laporan
+                    <h3 th:text="${totalLaporan}"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    Menunggu
+                    <h3 th:text="${menunggu}"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    Diproses
+                    <h3 th:text="${diproses}"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    Selesai
+                    <h3 th:text="${selesai}"></h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h4>Daftar Laporan</h4>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>ID</th>
+            <th>Judul</th>
+            <th>Lokasi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+
+        <tr th:each="laporan : ${laporanList}">
+            <td th:text="${laporan.id}"></td>
+            <td th:text="${laporan.judul}"></td>
+            <td th:text="${laporan.lokasi}"></td>
+            <td th:text="${laporan.status}"></td>
+<td>
+
+    <a th:href="@{'/admin/proses/' + ${laporan.id}}"
+       class="btn btn-warning btn-sm">
+       Proses
+    </a>
+
+    <a th:href="@{'/admin/selesai/' + ${laporan.id}}"
+       class="btn btn-success btn-sm">
+       Selesai
+    </a>
+
+    <a th:href="@{'/admin/hapus/' + ${laporan.id}}"
+       class="btn btn-danger btn-sm"
+       onclick="return confirm('Yakin ingin menghapus laporan ini?')">
+       Hapus
+    </a>
+
+</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
